@@ -3,20 +3,20 @@ import Error from './Error'
 
 const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
     const [nombre, setNombre] = useState('');
-    const [propietario, setPropietario] = useState('');
+    const [telefono, setTelefono] = useState('');
     const [email, setEmail] = useState('');
     const [fecha, setFecha] = useState('');
-    const [sintomas, setSintomas] = useState('');
+    const [trabajo, setTrabajo] = useState('');
 
     const [error, setError] = useState(false)
 
     useEffect(() => {
         if( Object.keys(paciente).length > 0  ) {
             setNombre(paciente.nombre)
-            setPropietario(paciente.propietario)
+            setTelefono(paciente.telefono)
             setEmail(paciente.email)
             setFecha(paciente.fecha)
-            setSintomas(paciente.sintomas)
+            setTrabajo(paciente.trabajo)
         }
     }, [paciente])
 
@@ -33,7 +33,7 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
         e.preventDefault();
 
         // Validación del Formulario
-        if( [ nombre, propietario, email, fecha, sintomas ].includes('') ) {
+        if( [ nombre, email, fecha, trabajo ].includes('') ) {
             console.log('Hay Al Menos un campo vacio')
 
             setError(true)
@@ -45,11 +45,11 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
 
         // Objeto de Paciente
         const objetoPaciente = {
-            nombre, 
-            propietario, 
-            email, 
-            fecha, 
-            sintomas
+            nombre,
+            telefono,
+            email,
+            fecha,
+            trabajo
         }
 
         if(paciente.id) {
@@ -68,10 +68,10 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
 
         // Reiniciar el form
         setNombre('')
-        setPropietario('')
+        setTelefono('')
         setEmail('')
         setFecha('')
-        setSintomas('')
+        setTrabajo('')
 
     }
 
@@ -91,12 +91,12 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
                 { error &&  <Error><p>Todos los campos son obligatorios</p></Error>}
                 <div className="mb-5">
                     <label htmlFor="mascota" className="block text-gray-700 uppercase font-bold">
-                        Nombre Mascota
+                        Nombre y Apellido
                     </label>
                     <input
-                        id="mascota"
+                        id="nombre"
                         type="text"
-                        placeholder="Nombre de la Mascota"
+                        placeholder="Nombre y Apellido"
                         className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                         value={nombre}
                         onChange={ (e) => setNombre(e.target.value) }
@@ -104,16 +104,16 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
                 </div>
 
                 <div className="mb-5">
-                    <label htmlFor="propietario" className="block text-gray-700 uppercase font-bold">
-                        Nombre Propietario
+                    <label htmlFor="mascota" className="block text-gray-700 uppercase font-bold">
+                        Teléfono
                     </label>
                     <input
-                        id="propietario"
-                        type="text"
-                        placeholder="Nombre del Propietario"
+                        id="telefono"
+                        type="number"
+                        placeholder="Telefono celular"
                         className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-                        value={propietario}
-                        onChange={ (e) => setPropietario(e.target.value) }
+                        value={telefono}
+                        onChange={ (e) => setTelefono(e.target.value) }
                     />  
                 </div>
 
@@ -124,7 +124,7 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
                     <input
                         id="email"
                         type="email"
-                        placeholder="Email Contacto Propietario"
+                        placeholder="Email Contacto"
                         className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                         value={email}
                         onChange={ (e) => setEmail(e.target.value) }
@@ -133,10 +133,10 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
 
                 <div className="mb-5">
                     <label htmlFor="alta" className="block text-gray-700 uppercase font-bold">
-                        Alta
+                        Fecha de visita
                     </label>
                     <input
-                        id="alta"
+                        id="fecha"
                         type="date"
                         className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                         value={fecha}
@@ -146,14 +146,14 @@ const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
 
                 <div className="mb-5">
                     <label htmlFor="sintomas" className="block text-gray-700 uppercase font-bold">
-                        Síntomas
+                        Trabajo que se realizo
                     </label>
                     <textarea 
-                        id="sintomas"
+                        id="trabajo"
                         className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-                        placeholder="Describe los Síntomas"
-                        value={sintomas}
-                        onChange={ (e) => setSintomas(e.target.value) }
+                        placeholder="Describe los trabajos que se realizaron"
+                        value={trabajo}
+                        onChange={ (e) => setTrabajo(e.target.value) }
                     />
                 </div>
 

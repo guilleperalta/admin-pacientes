@@ -1,5 +1,5 @@
 const Paciente = ({paciente, setPaciente, eliminarPaciente}) => {
-    const { nombre, propietario, email, fecha, sintomas, id } = paciente
+    const { nombre, telefono, email, fecha, trabajo, id } = paciente
 
     const handleEliminar = () => {
         const respuesta = confirm('Deseas eliminar este paciente?');
@@ -11,24 +11,24 @@ const Paciente = ({paciente, setPaciente, eliminarPaciente}) => {
 
     return (
         <div className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl">
-            <p className="font-bold mb-3 text-gray-700 uppercase">Nombre: {''}
+            <p className="font-bold mb-3 text-gray-700 uppercase">Nombre y apellido: {''}
                 <span className="font-normal normal-case">{nombre}</span>
             </p>
 
-            <p className="font-bold mb-3 text-gray-700 uppercase">Propietario: {''}
-                <span className="font-normal normal-case">{propietario}</span>
+            <p className="font-bold mb-3 text-gray-700 uppercase">Telefono: {''}
+                <span className="font-normal normal-case">{telefono}</span>
             </p>
 
             <p className="font-bold mb-3 text-gray-700 uppercase">Email: {''}
                 <span className="font-normal normal-case">{email}</span>
             </p>
 
-            <p className="font-bold mb-3 text-gray-700 uppercase">Fecha Alta: {''}
+            <p className="font-bold mb-3 text-gray-700 uppercase">Fecha de visita: {''}
                 <span className="font-normal normal-case">{fecha}</span>
             </p>
 
-            <p className="font-bold mb-3 text-gray-700 uppercase">Síntomas: {''}
-                <span className="font-normal normal-case">{sintomas}</span>
+            <p className="font-bold mb-3 text-gray-700 uppercase">Trabajo que se realizo: {''}
+                <span className="font-normal normal-case">{trabajo}</span>
             </p>
 
             <div className="flex justify-between mt-10">
